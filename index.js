@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config()
 const {v4: uuidv4} = require('uuid');
 const { addDoc } = require('./src/firebase/firebase');
+// const config = require('.')
 
 const server = express();
 server.use(express.json())
