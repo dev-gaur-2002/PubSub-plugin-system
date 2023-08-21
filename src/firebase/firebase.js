@@ -2,7 +2,7 @@ const admin = require("firebase-admin");
 const { PubSub } = require("@google-cloud/pubsub");
 const { publishNewMessage } = require("../publisher/pub");
 
-const serviceAccount = require("../../config.json")
+const serviceAccount = require("./config.json")
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
