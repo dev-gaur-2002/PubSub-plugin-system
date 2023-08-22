@@ -32,12 +32,11 @@ const readDoc = async (docId) => {
 const addDoc = async (newData, res) => {
 
     const existingDocs = await userRef
-        .where("uuidCol", "==", newData.uuidCol) //change this to userName in later username
+        .where("userName", "==", newData.userName)
         .get();
 
     if (existingDocs.empty) {
         const addedRecord = await userRef.add(newData).then(async(docRef)=>{
-            // console.log(docRef)
             let response =  await readDoc(docRef.id.toString());
             
             if(response){

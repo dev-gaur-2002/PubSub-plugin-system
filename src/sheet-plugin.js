@@ -22,8 +22,8 @@ const sheetsClient = new google.auth.JWT(
     console.log(`Message [${msg.id}] received: `);
     message = JSON.parse(msg.data);
     messageData = message._fieldsProto
-  
-    const formattedResponse = [[messageData.name.stringValue,messageData.userName.stringValue,message.age.stringValue,message.phoneNumber.stringValue,message.salary.stringValue,message.savings.stringValue]];
+    console.log(messageData.age)
+    const formattedResponse = [[messageData.name.stringValue,messageData.userName.stringValue,messageData.age.stringValue,messageData.phoneNumber.stringValue,messageData.salary.stringValue,messageData.savings.stringValue]];
     console.log(formattedResponse)
   
     sheetsClient.authorize((err, tokens) => {
@@ -53,7 +53,7 @@ const sheetsClient = new google.auth.JWT(
   
     const options = {
       spreadsheetId: process.env.SHEET_ID,
-      range: 'Sheet1!A1:B1',
+      range: 'Sheet1!A2:F2',
       valueInputOption: 'USER_ENTERED',
       resource: {
         values: response,

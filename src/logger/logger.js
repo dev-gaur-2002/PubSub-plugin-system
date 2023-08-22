@@ -1,4 +1,5 @@
 const winston = require('winson')
+const x = require('../')
 
 const dateFormat = ()=>{
     return new Date(Date.now()).toUTCString
@@ -10,7 +11,7 @@ class EventLogger{
             transports:[
                 new transports.Console(),
                 new winston.transports.File({
-                    filename:'./logs/application.log'
+                    filename:'../log/application.log'
                 })
             ],
             format: winston.format.printf((event)=>{
