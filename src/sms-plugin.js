@@ -1,5 +1,4 @@
 const express = require('express')
-const {google} = require('googleapis')
 const {PubSub} = require('@google-cloud/pubsub')
 
 require('dotenv').config();
@@ -20,9 +19,8 @@ const client = require('twilio')(accountSid, authToken);
 const callbackOnPull = (msg) => {
     console.log(`Message [${msg.id}] received: `);
     message = JSON.parse(msg.data);
-    // console.log(message)
     let phoneNumber = message._fieldsProto.phoneNumber.stringValue;
-    phoneNumber = '+91'+phoneNumber
+    phoneNumber = '+91'+phoneNumber // for indian numbers only
     console.log(phoneNumber)
     sendSms(phoneNumber)
     msg.ack();

@@ -1,5 +1,4 @@
-const winston = require('winson')
-const x = require('../')
+const winston = require("winston")
 
 const dateFormat = ()=>{
     return new Date(Date.now()).toUTCString
@@ -9,14 +8,14 @@ class EventLogger{
     constructor(){
         this.logger = winston.createLogger({
             transports:[
-                new transports.Console(),
+                new winston.transports.Console(),
                 new winston.transports.File({
-                    filename:'../log/application.log'
+                    filename:'application.log'
                 })
             ],
             format: winston.format.printf((event)=>{
                 let loggedMessage = `${dateFormat()} | ${event.level.toUpperCase()} | ${event.message}`;
-                loggedMessage = event.obj? message+` data: ${JSON.stringify(event.obj)} |`: message;
+                loggedMessage = event.obj? loggedMessage+` data: ${JSON.stringify(event.obj)} |`: message;
                 return loggedMessage;
             }),
         });
@@ -53,4 +52,6 @@ class EventLogger{
   }
 }
 
-module.exports = EventLogger;
+module.exports = {
+    EventLogger
+};
