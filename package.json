@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sheet-plugin":"node ./src/sheet-plugin.js",
+    "sms-plugin":"node ./src/sms-plugin.js",
+    "log-plugin": "node ./src/log-plugin.js"
   },
   "author": "",
   "license": "ISC",
